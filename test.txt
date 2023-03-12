@@ -1,0 +1,13 @@
+<%
+for(Todo todo : Application.getInstance().getLesTodos() ){
+%>
+<p>
+   <%=todo.getTexte() %>
+   <%=todo.isActif() %>
+</p>
+<%
+}
+%>
+
+
+
