@@ -61,6 +61,3 @@ Filter tasks by completion status using the dropdown menu on the home page.
 Edit a task by clicking the "Edit" button next to the task on the View All Tasks page.
 
 Delete a task by clicking the "Delete" button next to the task on the View All Tasks page.
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
