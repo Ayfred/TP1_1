@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+ 	  <script>
+ 	 angular.module('todoApp', []).controller('TodoListController', function( $http ) {
+
+
+ 		var todoList = this;
+
+ 		todoList.todos = [
+ 		{ texte: 'chocolat' , actif:false},
+ 		{ texte: 'gateaux' , actif:true}
+ 		]
+ 		 
+ 		// Fonction pour ajouter un  todo depuis l'interface HTML
+ 		todoList.addTodo = function() {
+ 		      todoList.todos.push( {texte:todoList.todoText, actif:false});
+ 		      todoList.todoText = '';
+ 		};
+ 	 })
+ 	  
+ 	  </script>   
+</head>
+<body>
+
+      <h1>angularJS!!!</h1>
+      <div ng-app="todoApp">
+      
+      <div ng-controller="TodoListController as todoList">
+
+      	<ul>
+      		<li ng-repeat="todo in todoList.todos"> 
+      		{{todo.texte}} 
+      		<input type="checkbox" ng-model="todo.actif"> 
+      		</li> 
+     	</ul>
+  
+ 		</form>
+ 	  </div>
+ 	  </div>
+
+</body>
+</html>

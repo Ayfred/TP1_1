@@ -1,19 +1,16 @@
-<?json version="1.0" encoding="utf-8"?>
-<%@ page import="model.*" %>
-{
+<%@ page import="model.*" %><%@ page language="java" contentType="application/json;" %>{
  "todos":
  [
- <% 
- int i = 0;
- for(Todo todo : Application.getInstance().getLesTodos()){ 
- %>
+ <%int i = 0;
+ for(Todo todo : Application1.getInstance().getLesTodos()){%>
     {
-      "id": "<%= i %>",
-      "texte": "<%=todo.getTexte() %>",
-      "actif": "<%= todo.isActif() %>"
-    },
-	<% i++; %>
-<%
+      "id": "<%=todo.getId()%>",
+      "texte": "<%=todo.getTexte()%>",
+      "actif": "<%=todo.isActif()%>"
+    }
+<%i++;
+	if ( i == Application1.getInstance().getLesTodos().size() -1){%>,<%
+	}
 } 
 %>
   ]

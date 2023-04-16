@@ -15,15 +15,18 @@ import java.util.List;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = { "/Controlleur"})
+//@WebServlet(urlPatterns = { "/Controller"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger("TP1_1");
+
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Controller() {
         super();
+        
         // TODO Auto-generated constructor stub
     }
 
@@ -32,11 +35,12 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String vueFinale = "ListTodo.jsp";
+		String vueFinale = "react.jsp";
+		System.out.println("first" + vueFinale);
 		
 		vueFinale = doAction(request);
 		
-		request.getRequestDispatcher(vueFinale).forward(request, response);
+		request.getRequestDispatcher(vueFinale ).forward(request, response);
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 
@@ -51,8 +55,8 @@ public class Controller extends HttpServlet {
 	}
 	
 	private String doAction(HttpServletRequest request) {
-
-		String vueFinale = "ListTodo.jsp";
+		
+		String vueFinale = "react.jsp";
 
 		String action = request.getParameter("action");
 		//List<String> keys = Collections.list(request.getParameterNames());
@@ -61,9 +65,11 @@ public class Controller extends HttpServlet {
 		if ("addTodo".equals(action)) {
 
 		    String texte = request.getParameter("todo_texte");
+		    
 		    Application.getInstance().addTodo(texte, false);
+		    log.debug( "addTodo " + texte );
 
-		    vueFinale = "ListTodo.jsp";
+		    vueFinale = "react.jsp";
 		}
 
 		// Action2 Update list ...
@@ -77,7 +83,7 @@ public class Controller extends HttpServlet {
 			else {
 				Application.getInstance().updateTodo(texte, true);
 			}
-		    vueFinale = "ListTodo.jsp";
+		    vueFinale = "react.jsp";
 		}
 		
 		//Action 3 checkbox_name
@@ -95,17 +101,16 @@ public class Controller extends HttpServlet {
 					
 				}
 			}
-			    vueFinale = "ListTodo.jsp";
+			vueFinale = "react.jsp";
 		}
 		
 		//Action 4 Delete
-		
 		if ("Delete".equals(action)) {
 					
 			String texte = request.getParameter("todo_delete");
 		    Application.getInstance().deleteTodo(texte);
 			
-			vueFinale = "ListTodo.jsp";
+			vueFinale = "react.jsp";
 		}
 		
 		if("XML".equals(action)) {
@@ -116,7 +121,8 @@ public class Controller extends HttpServlet {
 			vueFinale = "json.jsp";
 		}
 
-		
+	    log.info(String.format("Vue Finale : %s", vueFinale));
+
 		
 
 		// ... 

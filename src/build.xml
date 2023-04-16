@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="concat_react" name="Concat several babel/react files into an unique file">
+<property name="dir.workspace" value="${dir.buildfile}/.."/>
+<target name="concat_react"> 
+<concat destfile="${dir.workspace}/main/webapp/js/react.js" append="false" >
+const rootElement = document.getElementById('main');
+</concat> 
+<concat destfile="${dir.workspace}/main/webapp/js/react.js" append="true">
+<fileset dir="${dir.workspace}/main/webapp/jsx" includes="**/*.jsx" excludes="App.jsx"/>
+<filelist dir="${dir.workspace}/main/webapp/jsx" files="App.jsx"/>
+</concat>
+</target>
+</project>

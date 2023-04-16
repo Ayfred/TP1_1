@@ -4,7 +4,7 @@
 
 <%
 int i = 0;
-for(Todo todo : Application.getInstance().getLesTodos() ){
+for(Todo todo : Application1.getInstance().getLesTodos() ){
 %>
 
 	<todo id="<%= i %>" texte="<%=todo.getTexte() %>" actif= "<%= todo.isActif() %>"/>
